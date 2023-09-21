@@ -3,7 +3,7 @@ define empl = Character("Empleado",color="#02ac66")
 init:
     $precio=0
     $dinero=62
-screen dineroo():
+screen dinero():
     frame:
         xalign 0 ypos 0
         vbox:
@@ -14,7 +14,7 @@ label start:
     play music "musicachill.mp3"
 
     scene local with fade
-    show screen dineroo
+    show screen dinero
     me "tengo ganas de un cafe"
     me "oh... un starbucks, es un poco caro pero es mejor que nada"
     "entras al starbucks."
@@ -24,7 +24,6 @@ label start:
     "te diriges al mostrador"
     "..."
     scene fondo3 with fade
-    #soud de pasos
     "......"
     show trabajador2 at right with dissolve
     empl "buenas tardes señor"
@@ -38,22 +37,21 @@ label start:
         empl "Aqui tiene el menu"
         menu:
             "bebidas":
-                menu:
-                    empl "tenemos una gran variedad de bebidas"
-                    "Bebidas calientes":
-                        jump bebidascalientes
-
-                    "Frappuccino":
-                        jump frappuccino
-
-                    "Bebidas frias":
-                        jump bebidasfrias
-
-                    "Bebidas a base de Té":
-                        jump te
-
-                    "Cold brew":
-                        jump coldbrew
+                label bebidas:
+                    menu:
+                        empl "tenemos una gran variedad de bebidas"
+                        "Bebidas calientes":
+                            jump bebidascalientes
+                        "Frappuccino":
+                            jump frappuccino
+                        "Bebidas frias":
+                            jump bebidasfrias
+                        "Bebidas a base de Té":
+                            jump te
+                        "Cold brew":
+                            jump coldbrew
+                        "Volver":
+                            jump escoger
 
         return
     return
@@ -62,165 +60,188 @@ label bebidascalientes:
     menu:
         empl "muy buenas para calentar el cuerpo"
         "Expresso y cafe $10":
+            $precio+=10
             menu:
                 "Expreso americano":
-                    $precio+=10
                     empl "El clasico"
                     jump estaseguro
+                "Volver":
+                    $precio-=precio
+                    jump bebidascalientes
 
         "Expresso tradicional $15":
+            $precio+=15
             menu:
                 "Latte macchiato":
-                    $precio+=15
                     jump estaseguro
                 "Flat white":
-                    $precio+=15
                     jump estaseguro
                 "Mocha blanco":
-                    $precio+=15
                     jump estaseguro
                 "Mocha":
-                    $precio+=15
                     jump estaseguro
                 "Caramel macchiato":
-                    $precio+=15
                     jump estaseguro
                 "Cappuccino":
-                    $precio+=15
                     jump estaseguro
                 "Latte":
-                    $precio+=15
                     jump estaseguro
+                "Volver":
+                    $precio-=precio
+                    jump bebidascalientes
 
         "Alternativas al cafe $17":
+            $precio+=17
             menu:
                 "Chocolate caliente":
-                    $precio+=17
                     jump estaseguro
                 "Chocolate blanco":
-                    $precio+=17
                     jump estaseguro
                 "Chocolate 100% Mexicano":
                     empl "Orgullosamente Mexicano eh? :)"
-                    $precio+=17
                     jump estaseguro
+                "Volver":
+                    $precio-=precio
+                    jump bebidascalientes
+        "Volver":
+            jump bebidas
     return
 #label para mostrar la seccion de frappuccinos
 label frappuccino:
     menu:
         empl "Dulces y espumosos"
         "Frappuccino cafe $20":
+            $precio+=20
             menu:
                 "Chocolate blanco":
-                    $precio+=20
                     jump estaseguro
                 "Cajeta":
-                    $precio+=20
                     jump estaseguro
                 "Chip":
-                    $precio+=20
                     jump estaseguro
                 "Mocha blanco":
-                    $precio+=20
                     jump estaseguro
                 "Mocha":
-                    $precio+=20
                     jump estaseguro
                 "Expresso":
-                    $precio+=20
                     jump estaseguro
                 "Cafe":
-                    $precio+=20
                     jump estaseguro
                 "Caramel":
-                    $precio+=20
                     jump estaseguro
+                "Volver":
+                    $precio-=precio
+                    jump frappuccino
 
         "Frappuccino crema $22":
+            $precio+=22
             menu:
                 "Cajeta cream":
-                    $precio+=22
                     jump estaseguro
                 "Vainilla cream":
-                    $precio+=22
                     jump estaseguro
                 "Piñacoco cream":
-                    $precio+=22
                     jump estaseguro
                 "Fresa cream":
-                    $precio+=22
                     jump estaseguro
+                "Volver":
+                    $precio-=precio
+                    jump frappuccino
+        "Volvar":
+            jump bebidas
     return
 #label para mostrar la seccion de bebidas frias
 label bebidasfrias:
     menu:
         empl "Sabrosas y refrescantes"
         "shakens $16":
+            $precio+=16
             menu:
                 "Shaken black tea":
-                    $precio+=16
                     jump estaseguro
                 "Shaken green tea":
-                    $precio+=16
                     jump estaseguro
                 "Hibiscus shaken lemon tea":
-                    $precio+=16
                     jump estaseguro
+                "Volver":
+                    $precio-=precio
+                    jump bebidasfrias
+
         "Refreshers $15":
+            $precio+=15
             menu:
                 "Star drink":
-                    $precio+=15
                     jump estaseguro
                 "Dragon drink":
-                    $precio+=15
                     jump estaseguro
                 "Pink drink":
-                    $precio+=15
                     jump estaseguro
+                "Volver":
+                    $precio-=precio
+                    jump bebidasfrias
+
         "Starbucks con hielo $17":
+            $precio+=17
             menu:
                 empl "Lo mismo pero con hielo"
                 "Mocca helado":
-                    $precio+=17
                     jump estaseguro
                 "Chocolate Mexicano helado":
-                    $precio+=17
                     jump estaseguro
                 "Cafe helado":
-                    $precio+=17
                     jump estaseguro
                 "Latte helado":
-                    $precio+=17
                     jump estaseguro
+                "Volver":
+                    $precio-=precio
+                    jump bebidasfrias
+        "Volver":
+            jump bebidas
     return
 #label para mostrar la seccion de bebidas a base de Té
 label te:
     menu:
         empl "Un buen Té para una buen Hombre"
         "Té latte caliente $10":
+            $precio+=10
             menu:
                 "Matcha green tea latte":
-                    $precio+=10
                     jump estaseguro
+                "Volver":
+                    $precio-=precio
+                    jump te
+
         "Té helado $12":
+            $precio+=12
             menu:
                 "Emperors clouds & mist helado":
-                    $precio+=12
                     jump estaseguro
+                "Volver":
+                    $precio-=precio
+                    jump te
+
         "Infusiones con tes de hoja entera $20":
+            $precio+=20
             menu:
                 "Chai":
-                    $precio+=20
                     jump estaseguro
                 "Chai helado":
                     empl "Lo mismo pero frio"
-                    $precio+=20
                     jump estaseguro
+                "Volver":
+                    $precio-=precio
+                    jump te
+
         "Té concentrado $18":
+            $precio+=18
             menu:
                 "Chai latte":
-                    $precio+=18
                     jump estaseguro
+                "Volver":
+                    $precio-=precio
+                    jump te
+        "Volver":
+            jump bebidas
     return
 #label para mostrar la seccion de cold brew
 label coldbrew:
@@ -231,13 +252,17 @@ label coldbrew:
     menu:
         empl "La verdad no sé que sea esto"
         "starbucks con hielo $30":
+            $precio+=30
             menu:
                 "Vainilla sweet cream cold brew":
-                    $precio+=30
                     jump estaseguro
                 "Cold brew":
-                    $precio+=30
                     jump estaseguro
+                "Volver":
+                    $precio-=precio
+                    jump coldbrew
+        "Volver":
+            jump bebidas
     return
 #codigo que desencadena el dialogo para confirmar la compra del producto
 label estaseguro:
