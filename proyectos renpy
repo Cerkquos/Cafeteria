@@ -1,0 +1,251 @@
+define me = Character("Me",color="#23bac4")
+define empl = Character("Empleado",color="#02ac66")
+init:
+    $precio=0
+    $dinero=62
+screen dineroo():
+    frame:
+        xalign 0 ypos 0
+        vbox:
+            text "Dinero:"
+            text "     [dinero]"
+#codigo base del juego
+label start:
+    play music "musicachill.mp3"
+
+    scene local with fade
+    show screen dineroo
+    me "tengo ganas de un cafe"
+    me "oh... un starbucks, es un poco caro pero es mejor que nada"
+    "entras al starbucks."
+
+    scene fondo2 with fade
+    play sound "campanillas.mp3"
+    "te diriges al mostrador"
+    "..."
+    scene fondo3 with fade
+    #soud de pasos
+    "......"
+    show trabajador2 at right with dissolve
+    empl "buenas tardes señor"
+    me "buenas tardes"
+    empl "digame, que va a ordenar?"
+    me "umhhh... no estoy seguro"
+    empl "puedo enseñarle el menu si gusta"
+    me "si, eso estaria bien"
+
+    label escoger:
+        empl "Aqui tiene el menu"
+        menu:
+            "bebidas":
+                menu:
+                    empl "tenemos una gran variedad de bebidas"
+                    "Bebidas calientes":
+                        menu:
+                            empl "muy buenas para calentar el cuerpo"
+                            "Expresso y cafe $10":
+                                menu:
+                                    "Expreso americano":
+                                        $precio+=10
+                                        empl "El clasico"
+                                        jump estaseguro
+
+                            "Expresso tradicional $15":
+                                menu:
+                                    "Latte macchiato":
+                                        $precio+=15
+                                        jump estaseguro
+                                    "Flat white":
+                                        $precio+=15
+                                        jump estaseguro
+                                    "Mocha blanco":
+                                        $precio+=15
+                                        jump estaseguro
+                                    "Mocha":
+                                        $precio+=15
+                                        jump estaseguro
+                                    "Caramel macchiato":
+                                        $precio+=15
+                                        jump estaseguro
+                                    "Cappuccino":
+                                        $precio+=15
+                                        jump estaseguro
+                                    "Latte":
+                                        $precio+=15
+                                        jump estaseguro
+                            "Alternativas al cafe $17":
+                                menu:
+                                    "Chocolate caliente":
+                                        $precio+=17
+                                        jump estaseguro
+                                    "Chocolate blanco":
+                                        $precio+=17
+                                        jump estaseguro
+                                    "Chocolate 100% Mexicano":
+                                        empl "Orgullosamente Mexicano eh? :)"
+                                        $precio+=17
+                                        jump estaseguro
+                    "Frappuccino":
+                        menu:
+                            empl "Dulces y espumosos"
+                            "Frappuccino cafe $20":
+                                menu:
+                                    "Chocolate blanco":
+                                        $precio+=20
+                                        jump estaseguro
+                                    "Cajeta":
+                                        $precio+=20
+                                        jump estaseguro
+                                    "Chip":
+                                        $precio+=20
+                                        jump estaseguro
+                                    "Mocha blanco":
+                                        $precio+=20
+                                        jump estaseguro
+                                    "Mocha":
+                                        $precio+=20
+                                        jump estaseguro
+                                    "Expresso":
+                                        $precio+=20
+                                        jump estaseguro
+                                    "Cafe":
+                                        $precio+=20
+                                        jump estaseguro
+                                    "Caramel":
+                                        $precio+=20
+                                        jump estaseguro
+                            "Frappuccino crema $22":
+                                menu:
+                                    "Cajeta cream":
+                                        $precio+=22
+                                        jump estaseguro
+                                    "Vainilla cream":
+                                        $precio+=22
+                                        jump estaseguro
+                                    "Piñacoco cream":
+                                        $precio+=22
+                                        jump estaseguro
+                                    "Fresa cream":
+                                        $precio+=22
+                                        jump estaseguro
+
+                    "Bebidas frias":
+                        menu:
+                            empl "Sabrosas y refrescantes"
+                            "shakens $16":
+                                menu:
+                                    "Shaken black tea":
+                                        $precio+=16
+                                        jump estaseguro
+                                    "Shaken green tea":
+                                        $precio+=16
+                                        jump estaseguro
+                                    "Hibiscus shaken lemon tea":
+                                        $precio+=16
+                                        jump estaseguro
+                            "Refreshers $15":
+                                menu:
+                                    "Star drink":
+                                        $precio+=15
+                                        jump estaseguro
+                                    "Dragon drink":
+                                        $precio+=15
+                                        jump estaseguro
+                                    "Pink drink":
+                                        $precio+=15
+                                        jump estaseguro
+                            "Starbucks con hielo $17":
+                                menu:
+                                    empl "Lo mismo pero con hielo"
+                                    "Mocca helado":
+                                        $precio+=17
+                                        jump estaseguro
+                                    "Chocolate Mexicano helado":
+                                        $precio+=17
+                                        jump estaseguro
+                                    "Cafe helado":
+                                        $precio+=17
+                                        jump estaseguro
+                                    "Latte helado":
+                                        $precio+=17
+                                        jump estaseguro
+                    "Bebidas a base de Té":
+                        menu:
+                            empl "Un buen Té para una buen Hombre"
+                            "Té latte caliente $10":
+                                menu:
+                                    "Matcha green tea latte":
+                                        $precio+=10
+                                        jump estaseguro
+                            "Té helado $12":
+                                menu:
+                                    "Emperors clouds & mist helado":
+                                        $precio+=12
+                                        jump estaseguro
+                            "Infusiones con tes de hoja entera $20":
+                                menu:
+                                    "Chai":
+                                        $precio+=20
+                                        jump estaseguro
+                                    "Chai helado":
+                                        empl "Lo mismo pero frio"
+                                        $precio+=20
+                                        jump estaseguro
+                            "Té concentrado $18":
+                                menu:
+                                    "Chai latte":
+                                        $precio+=18
+                                        jump estaseguro
+                    "Cold brew":
+                        me "Que es c-cold brew?"
+                        empl "Cafe..."
+                        me "......"
+                        empl"........"
+                        menu:
+                            empl "La verdad no sé que sea esto"
+                            "starbucks con hielo $30":
+                                menu:
+                                    "Vainilla sweet cream cold brew":
+                                        $precio+=30
+                                        jump estaseguro
+                                    "Cold brew":
+                                        $precio+=30
+                                        jump estaseguro
+        return
+
+#codigo que desencadena el dialogo para confirmar la compra del producto
+label estaseguro:
+    empl "Esta seguro?"
+    menu:
+        "si":
+            if dinero>=precio:
+                $dinero-=precio
+                play sound "dinero.mp3"
+            else:
+                me "(No tengo suficiente dinero)"
+            $precio-=precio
+            jump seriatodo
+        "no":
+            empl "Tomese su tiempo"
+            $precio-=precio
+            jump escoger
+
+    return
+#codigo que desencadena el dialogo para confirmar la compra total de todos los productos elegidos por el jugador
+label seriatodo:
+    empl "Seria todo?"
+    menu:
+        "si":
+            jump pagar
+        "no":
+            jump escoger
+    return
+#codigo que desencadena el dialogo final antes de que se termine el juego
+label pagar:
+    empl "Que tenga un buen dia"
+    me "Gracias"
+
+    return
+
+
+return
